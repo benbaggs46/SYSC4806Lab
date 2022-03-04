@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <title>AddressBook</title>
+</head>
+<body>
+
+<h1 th:text="'Address Book ' + ${addressBook.getId()}"></h1>
+<ul>
+    <li th:each="buddy : ${addressBook.getBuddies()}"
+        th:text="${buddy.toString()}"></li>
+    <form action="#" th:action="@{../}" method="get">
+        <p><input type="submit" value="Back" /> </p>
+    </form>
+    <h3>Add or Remove Buddy</h3>
+    <form action="#" th:action="@{'/addressBooks/' + ${addressBook.getId()} + '/edit'}" th:object="${formData}" method="post">
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Phone Number: <input type="text" th:field="*{phoneNumber}" /></p>
+        <p><input type="submit" name="action" value="Add"/>
+            <input type="submit" name="action" value="Remove"/>
+            <input type="reset" value="Reset" /></p>
+    </form>
+</ul>
+</body>
+</html>

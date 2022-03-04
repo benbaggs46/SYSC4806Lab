@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Address Books</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h1>Address Books</h1>
+<ul>
+    <li th:each="book : ${addressBooks}">
+        <a th:text="'Address book ' + ${book.getId()}" th:href="'/addressBooks/'+ ${book.getId()}"></a>
+    </li>
+    <form action="#" th:action="@{/new}" method="get">
+        <p><input type="submit" value="New Address Book" /> </p>
+    </form>
+</ul>
+</body>
+</html>
