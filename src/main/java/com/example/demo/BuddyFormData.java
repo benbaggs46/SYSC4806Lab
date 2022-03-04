@@ -18,6 +18,15 @@ public class BuddyFormData {
         this.phoneNumber = phoneNumber;
     }
 
+    public void setAddress(String address){
+        this.address = address;
+    }
+
     private String name;
     private String phoneNumber;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
 }

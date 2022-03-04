@@ -1,13 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class AddressBookController {
@@ -43,7 +41,7 @@ public class AddressBookController {
     public String addOrRemoveBuddy(@PathVariable("id") Long id, @RequestParam("action") String action, BuddyFormData formData) {
         AddressBook addressBook = repository.findById(id).get();
         if(action.equals("Add")) {
-            BuddyInfo buddy = new BuddyInfo(formData.getName(), formData.getPhoneNumber());
+            BuddyInfo buddy = new BuddyInfo(formData.getName(), formData.getPhoneNumber(), formData.getAddress());
             addressBook.addBuddy(buddy);
             buddy_repository.save(buddy);
 
